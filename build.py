@@ -2,8 +2,8 @@
 def main():
     #template = open("base.html").read()
     #index_content = open("content/index.html").read()
-   #finished_index_page = template.replace("{{content}}", index_content)
-   #open("docs/index.html", "w+").write(finished_index_page)
+    #finished_index_page = template.replace("{{content}}", index_content)
+    #open("docs/index.html", "w+").write(finished_index_page)
     #top = open('templates/top.html').read()
     #center = open('content/index.html').read()
     #bottom = open('templates/bottom.html').read()
@@ -26,7 +26,7 @@ def main():
         {
         "filename": "content/blog.html",
         "output": "docs/blog.html",  
-        "title": "Blog", 
+        "title": "Blog",
         },
         {
         "filename": "content/first.html",
@@ -39,11 +39,15 @@ def main():
         content = open(page["filename"]).read()
         finished_page = template.replace("{{content}}", content)
         open(page["output"], "w+").write(finished_page)
-        #page_title = page['title']
-        #print(page_title)
-        print('done')
-   
-if __name__ == "__main__":
-    main()   
+        def recess(x):
+            print("template/base.html" + x)
+           
+        recess("filename")
+          
+        
+        
+
+        
+main()   
   
 
