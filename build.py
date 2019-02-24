@@ -1,8 +1,14 @@
+def build_page(page_data):    
+    template = open("templates/base.html").read()
+    content = open(page_data["filename"]).read()
+    return template.replace("{{content}}", content)
+    
+def write_page(page, finished_page):
+    open(page["output"], "w+").write(finished_page)
+
 
 def main():
-    content = open('docs/index.html')
-    resulting
-
+   
 
 
     pages = [
@@ -28,20 +34,10 @@ def main():
         },         
     ]
     for page in pages:
-        def apply_template(content):
-           template = open("templates/base.html").read()
-        return results
-        def main()
-           content = open(page["filename"]).read()
-           resulting_html_for_index = apply_template(content)
+        finished_page = build_page(page)
+        write_page(page, finished_page)
         
-        finished_page = template.replace("{{content}}", content)
-        open(page["output"], "w+").write(finished_page)
-        
-     
         print('done')
    
 if __name__ == "__main__":
     main()   
-  
-
