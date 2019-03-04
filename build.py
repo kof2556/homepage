@@ -1,41 +1,40 @@
 import glob
 import os 
 
-pages = [
-        {
-        "filename": "content/about.html",
-        "output": "docs/about.html",  
-        "title": "About Me", 
-        },
-        {
-        "filename": "content/projects.html",
-        "output": "docs/project.html",  
-        "title": "Projects", 
-        },
-        {
-        "filename": "content/blog.html",
-        "output": "docs/blog.html",  
-        "title": "Blog", 
-        },
-        {
-        "filename": "content/first.html",
-        "output": "docs/index.html",  
-        "title": "Index", 
-        },         
-
-    ]
-
+pages = []
 
 
 def main():
+    all_html_files = glob.glob("content/*.html")
+    print(all_html_files)
+    
+    for each in all_html_files:
+        file_path = each
+        file_name = os.path.basename(file_path)
+        print(file_name)
+        name_only, extension = os.path.splitext(file_name)
+        print(name_only)
+        pages.append({
+            'filename': file_path,
+            'title': name_only,
+            'output': 'docs/' + file_name,
+            })
+    print(pages)
+# replacing all title templates with Homepage
     for page in pages:
-        template = open("templates/base.html").read()
-        content = open(page["filename"]).read()
-        finished_page = template.replace("{{content}}", content)
-        open(page["output"], "w+").write(finished_page)
+       from jinja2 import Template
+       index_html = open("content/index.html").read()
+       template_html = open("templates/base.html").read()
+       template = Template(template_html)
+       finished_page = template.render(
+            title="Homepage",
+            content=index_html,
+        )
+       open(page["output"], "w+").write(finished_page)
+       print('goodbye')
+       {% for page in pages %}
+       
         
-
-           
 if __name__ == "__main__":
     main()
     
