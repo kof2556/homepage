@@ -32,7 +32,7 @@ def main():
         )
        open(page["output"], "w+").write(finished_page)
        print('goodbye')
-       {% for page in pages %}
+       
        
         
 if __name__ == "__main__":
