@@ -29,6 +29,7 @@ def main():
        finished_page = template.render(
             title="Homepage",
             content=index_html,
+            pages=pages, content=content_html
         )
        open(page["output"], "w+").write(finished_page)
        print('goodbye')
